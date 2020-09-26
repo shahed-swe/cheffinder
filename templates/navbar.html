@@ -28,6 +28,7 @@
                         </li>
                         {% elif user.is_authenticated and user.is_superuser %}
                         <li><a href="/search">Search</a></li>
+                        <li><a href="/admin">Admin</a></li>
                         <li><a href="#">{{user}}</a>
                             <ul class="sub-menu">
                                 <li><a href="#profile">Profile</a></li>
