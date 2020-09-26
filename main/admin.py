@@ -4,5 +4,5 @@ from main.models import ChefUser
 
 
 # Register your models here.
-admin.site.register(Permission)
+admin.site.site_header = 'Admin Control'
 admin.site.register(ChefUser)

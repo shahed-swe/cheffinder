@@ -9,13 +9,17 @@ def home(request):
 def about(request):
     return render(request, "front/about.html",{"title":"About"})
 
+def apply(request):
+    return render(request, 'front/apply.html',{"title":"Apply"})
+
+
+
 def mylogin(request):
     if request.user.is_authenticated:
         return redirect('/')
     if request.method == 'POST':
         utxt = request.POST.get('username')
         upass = request.POST.get('password')
-        print(utxt,upass)
         if utxt != "" and upass != "":
             user = authenticate(username=utxt, password=upass)
             if user != None:
@@ -28,13 +32,14 @@ def myregister(request):
     if request.user.is_authenticated:
         return redirect('/')
     if request.method == "POST":
-        uname = request.POST.get('username')
-        f_name = request.POST.get('first_name')
-        l_name = request.POST.get('last_name')
-        email = request.POST.get('email')
-        password = request.POST.get('password1')
-        user = User.objects.create_user(username=uname,first_name=f_name,last_name=l_name,email=email,password=password)
-        return redirect('/login')
+        form  = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            uname = form.cleaned_data.get('username')
+            passwd = form.cleaned_data.get('password1')
+            user = authenticate(username = uname,password = passwd)
+            login(request, user)
+            return redirect('/')
     form = CreateUserForm()
 
     context = {"title":"Register",'form':form}

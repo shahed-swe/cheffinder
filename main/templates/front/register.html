@@ -4,14 +4,14 @@
 <!-- loading static -->
 {%load static%}
 <!-- static files has been loaded -->
-{% block content %}
+{% block main_content %}
 <!-- main block starts here -->
 <!-- content starts -->
 <style>
     .registration-panel {
         background-color: #ffffff;
         color: rgb(0, 0, 0);
-        padding-top: 70px;
+        padding: 90px 0 90px 0;
     }
     
     .registration-panel h2 {
@@ -59,7 +59,7 @@
     
     @media only screen and (max-width: 550px) {
         .registration-panel {
-            padding-top: 50px;
+            padding: 50px 0 50px 0;
         }
     }
 </style>
@@ -95,9 +95,9 @@
     </div>
 </section>
 <!-- content stop -->
-{% endblock content %}
+{% endblock main_content %}
 <!-- main block stops here -->
-{% block script %}
+{% block scripts %}
 <!-- script tag start -->
 <script src="{%static 'front/js/jquery.validate.min.js'%}"></script>
 <script src="{%static 'front/js/additional-methods.min.js'%}"></script>
@@ -146,4 +146,4 @@
     })
 </script>
 <!-- script tag stop -->
-{% endblock script %}
+{% endblock scripts %}

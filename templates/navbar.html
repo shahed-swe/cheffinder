@@ -16,9 +16,28 @@
                 <div class="main-menu">
                     <ul>
                         <li class="active"><a href="/">home</a></li>
-                        <li><a href="about/">about</a></li>
-                        <li><a href="search/">Search</a></li>
-                        <li><a href="contact/">Apply</a></li>
+                        <li><a href="/about">about</a></li>
+                        {% if user.is_authenticated and not user.is_superuser%}
+                        <li><a href="/search">Search</a></li>
+                        <li><a href="/apply">Apply</a></li>
+                        <li><a href="#">{{user}}</a>
+                            <ul class="sub-menu">
+                                <li><a href="#profile">Profile</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                        {% elif user.is_authenticated and user.is_superuser %}
+                        <li><a href="/search">Search</a></li>
+                        <li><a href="#">{{user}}</a>
+                            <ul class="sub-menu">
+                                <li><a href="#profile">Profile</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                        {%else%}
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Registration</a></li>
+                        {%endif%}
                     </ul>
                 </div>
             </div>
