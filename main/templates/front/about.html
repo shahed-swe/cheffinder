@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+<!-- extending base html -->
+{% load static %}
+<!-- loading static files -->
+{% block main_content %}
+<!-- starting of main content -->
+<!-- Banner Area Starts -->
+<section class="banner-area text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h6>About Us</h6>
+                <h1>Discover<span class="prime-color"></span><br>
+                    <span class="style-change"><span class="prime-color">About Us</span></span>
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Area End -->
+
+<!-- Welcome Area Starts -->
+<section class="welcome-area section-padding2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 align-self-center">
+                <div class="welcome-img">
+                    <img src="{% static 'front/images/welcome-bg.png' %}" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <div class="welcome-text mt-5 mt-md-0">
+                    <h3><span class="style-change">welcome</span> <br>to Chef FInder</h3>
+                    <p class="pt-3">Created god gathered don't you yielding herb you had. And isn't, god was saw. Dominion. Great sixth for in unto was. Open can't tree am waters brought. Divide after there. Was.
+                    </p>
+                    <p>Created god gathered don't you yielding herb you had. And isn't, god was saw. Dominion. Great sixth for in unto was. Open can't tree waters brought. Divide after there. Was. Created god gathered don't you yielding herb you had. And
+                        isn't god.</p>
+                    <a href="#" class="template-btn mt-3">book a table</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Welcome Area End -->
+<!-- end of main content -->
+{% endblock main_content %}
