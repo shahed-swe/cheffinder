@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django import forms
 from django.core.validators import validate_email
 
-
 class CreateUserForm(UserCreationForm):
     username = forms.CharField(max_length=120, widget=forms.TextInput(
         attrs={

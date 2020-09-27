@@ -1,8 +1,7 @@
 from django.db import models
 
 # Create your models here
-class ChefUser(models.Model):
-    c_id = models.IntegerField(blank=True, null=True)
+class ChefCreate(models.Model):
     user_name = models.CharField(max_length=120,blank=True,null=True)
     fist_name = models.CharField(max_length=120,blank=True,null=True)
     last_name = models.CharField(max_length=120,blank=True,null=True)
@@ -10,3 +9,7 @@ class ChefUser(models.Model):
     phone = models.CharField(max_length=20,blank=True,null=True)
     password = models.CharField(max_length=120,blank=True,null=True)
     location = models.CharField(max_length=120,blank=True,null=True)
+    cv = models.FileField(upload_to='cv/')
+
+    class Meta:
+        db_table = 'chef_create'
