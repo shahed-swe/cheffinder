@@ -6,8 +6,47 @@ from django.core.validators import validate_email
 from main.models import ChefCreate
 
 class ChefCreateForm(forms.ModelForm):
+
+    user_name = forms.CharField(max_length=120, widget=forms.TextInput(
+        attrs={
+            'class':'form-control',
+            'id':'user-name',
+            'placeholder':'Enter Your Username',
+        }
+    ))
+    first_name = forms.CharField(max_length=120, widget=forms.TextInput(
+        attrs = {
+            'class':'form-control',
+            'id':'first_name',
+            'placeholder':'Enter Your First Name',
+        }
+    ))
+
+    last_name = forms.CharField(max_length=120, widget=forms.TextInput(
+        attrs = {
+            'class':'form-control',
+            'id':'first_name',
+            'placeholder':'Enter Your Last Name',
+        }
+    ))
+
+    email = forms.CharField(max_length=120, widget=forms.TextInput(
+        attrs={
+            'class':'form-control',
+            'id':'email',
+            'placeholder':'Enter Your Email',
+        }
+    ))
+    phone = forms.CharField(max_length=20, widget=forms.TextInput(
+        attrs={
+            'class':'form-control',
+            'id':'phone',
+            'placeholder':'Enter Your Phone Number',
+        }
+    ))
     class Meta:
         model = ChefCreate
+        fields = ['user_name','first_name','last_name','email','phone','cv']
 
 
 class CreateUserForm(UserCreationForm):
