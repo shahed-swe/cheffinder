@@ -13,3 +13,6 @@ class ChefCreate(models.Model):
 
     class Meta:
         db_table = 'chef_create'
+    
+    def __str__(self):
+        return self.user_name + '|' + str(self.pk)

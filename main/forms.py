@@ -3,6 +3,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.core.validators import validate_email
+from main.models import ChefCreate
+
+class ChefCreateForm(forms.ModelForm):
+    class Meta:
+        model = ChefCreate
+
 
 class CreateUserForm(UserCreationForm):
     username = forms.CharField(max_length=120, widget=forms.TextInput(
