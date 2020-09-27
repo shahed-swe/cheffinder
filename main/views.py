@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .forms import CreateUserForm
+from .forms import ChefCreateForm,CreateUserForm
+from django.shortcuts import HttpResponse
 # Create your views here.
 def home(request):
     return render(request, "front/home.html",{"title":"Home"})
@@ -10,7 +11,18 @@ def about(request):
     return render(request, "front/about.html",{"title":"About"})
 
 def apply(request):
-    return render(request, 'front/apply.html',{"title":"Apply"})
+    if not request.user.is_authenticated:
+        return redirect('/login/')
+    if request.user.is_superuser:
+        return HttpResponse("<h4>You are not eligible </h4><br><a href='/'>Back</a>")
+    if request.method == 'POST':
+        form = ChefCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/apply/')
+    else:
+        form = ChefCreateForm()
+    return render(request, 'front/apply.html',{"title":"Apply","form":form})
 
 
 

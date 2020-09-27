@@ -9,7 +9,7 @@ class ChefCreateForm(forms.ModelForm):
 
     user_name = forms.CharField(max_length=120, widget=forms.TextInput(
         attrs={
-            'class':'form-control',
+            'class':'form-control col-12',
             'id':'user-name',
             'placeholder':'Enter Your Username',
         }
@@ -44,9 +44,23 @@ class ChefCreateForm(forms.ModelForm):
             'placeholder':'Enter Your Phone Number',
         }
     ))
+    
+    location = forms.CharField(max_length=120, widget=forms.TextInput(
+        attrs={
+            'id':'location',
+        }
+    ))
+
+    cv = forms.FileField(widget=forms.FileInput(
+        attrs={
+            'class':'form-control',
+            'id':'file',
+        }
+    ))
+
     class Meta:
         model = ChefCreate
-        fields = ['user_name','first_name','last_name','email','phone','cv']
+        fields = ['user_name','first_name','last_name','email','phone','location','cv']
 
 
 class CreateUserForm(UserCreationForm):

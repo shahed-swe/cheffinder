@@ -6,14 +6,60 @@
 <!-- main content block starts here -->
 <style>
     .apply-section {
-        margin-top: 100px;
+        margin-top: 150px;
         margin-bottom: 100px;
+    }
+    
+    .apply-section h1 {
+        font-style: normal;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: black;
+        padding-bottom: 20px;
+    }
+    
+    #location {
+        display: none;
     }
 </style>
 <section class="apply-section">
     <div class="container">
+        <h1>Apply Here</h1>
         <div class="row">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="col-12 col-lg-6 col-md-6 col-sm-10">
+                    <form method="POST" enctype="multipart/form-data">
+                        {%csrf_token%}
+                        <!-- csrf token generated -->
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                {{form.user_name}}
+                            </div>
+                            <div class="form-group col-6">
+                                {{form.first_name}}
+                            </div>
+                            <div class="form-group col-6">
+                                {{form.last_name}}
+                            </div>
+                            <div class="form-group col-12">
+                                {{form.email}}
+                            </div>
+                            <div class="form-group col-12">
+                                {{form.phone}}
+                            </div>
+                            {{form.location}}
+                            <div class="form-group col-12">
+                                {{form.cv}}
+                            </div>
+                            <div class="form-group col-12">
+                                <button class="btn btn-primary-outline shadow-none btn-block">Apply</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </form>
+            <div class="col-12 col-lg-6 col-md-6 col-sm-10">
 
+            </div>
         </div>
     </div>
 </section>
@@ -21,5 +67,24 @@
 {% endblock main_content %}
 <!-- scripts -->
 {% block scripts %}
-<!-- scripts -->
+<!-- scripts starts -->
+<script>
+    $(window).on('load', function() {
+        getLocation();
+    })
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showposition);
+        } else {
+            alert("Please Enable Your Location");
+        }
+    }
+
+    function showposition(position) {
+        const locstring = position.coords.latitude + '|' + position.coords.longitude;
+        $('#location').attr('value', locstring);
+    }
+</script>
+<!-- scripts ends -->
 {% endblock scripts %}
