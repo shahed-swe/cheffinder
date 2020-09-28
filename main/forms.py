@@ -73,6 +73,7 @@ class CreateUserForm(UserCreationForm):
             'placeholder': 'Enter Your Username',
         }
     ))
+
     first_name = forms.CharField(max_length=120, widget=forms.TextInput(
         attrs={
             'class': 'form-control',
@@ -80,6 +81,7 @@ class CreateUserForm(UserCreationForm):
             'placeholder': 'Enter Your First Name',
         }
     ))
+
     last_name = forms.CharField(max_length=120, widget=forms.TextInput(
         attrs={
             'class': 'form-control',
@@ -95,6 +97,7 @@ class CreateUserForm(UserCreationForm):
             'placeholder': 'Enter Your Email'
         }
     ))
+
     password1 = forms.CharField(max_length=12, widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',
@@ -102,6 +105,7 @@ class CreateUserForm(UserCreationForm):
             'placeholder': 'Enter Password First',
         }
     ))
+    
     password2 = forms.CharField(max_length=12, widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',
