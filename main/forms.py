@@ -11,14 +11,12 @@ class ChefCreateForm(forms.ModelForm):
         attrs={
             'class':'form-control col-12',
             'id':'user_name',
-            'placeholder':'Enter Your Username',
         }
     ))
     first_name = forms.CharField(max_length=120, widget=forms.TextInput(
         attrs = {
             'class':'form-control',
             'id':'first_name',
-            'placeholder':'Enter Your First Name',
         }
     ))
 
@@ -26,7 +24,6 @@ class ChefCreateForm(forms.ModelForm):
         attrs = {
             'class':'form-control',
             'id':'last_name',
-            'placeholder':'Enter Your Last Name',
         }
     ))
 
@@ -34,7 +31,6 @@ class ChefCreateForm(forms.ModelForm):
         attrs={
             'class':'form-control',
             'id':'email',
-            'placeholder':'Enter Your Email',
         }
     ))
     phone = forms.CharField(max_length=20, widget=forms.TextInput(
@@ -44,7 +40,13 @@ class ChefCreateForm(forms.ModelForm):
             'placeholder':'Enter Your Phone Number',
         }
     ))
-    
+    address = forms.CharField(max_length=120,widget=forms.TextInput(
+        attrs={
+            'class':'form-control',
+            'id':'address',
+            'placeholder':'Enter Your Address',
+        }
+    ))
     location = forms.CharField(max_length=120, widget=forms.TextInput(
         attrs={
             'id':'location',
@@ -60,7 +62,7 @@ class ChefCreateForm(forms.ModelForm):
 
     class Meta:
         model = ChefCreate
-        fields = ['user_name','first_name','last_name','email','phone','location','cv']
+        fields = ['user_name','first_name','last_name','email','phone','address','location','cv']
 
 
 class CreateUserForm(UserCreationForm):
