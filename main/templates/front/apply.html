@@ -85,6 +85,19 @@
         const locstring = position.coords.latitude + '|' + position.coords.longitude;
         $('#location').attr('value', locstring);
     }
+    // user information
+    const user_name = '{{user}}';
+    const first_name = '{{user.first_name}}';
+    const last_name = '{{user.last_name}}';
+    const email = '{{user.email}}';
+    $('#user_name').prop('disabled', true);
+    $('#user_name').attr('value', user_name);
+    $('#first_name').prop('disabled', true);
+    $('#first_name').attr('value', first_name);
+    $('#last_name').prop('disabled', true);
+    $('#last_name').attr('value', last_name);
+    $('#email').prop('disabled', true);
+    $('#email').attr('value', email);
 </script>
 <!-- scripts ends -->
 {% endblock scripts %}

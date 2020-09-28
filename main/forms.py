@@ -10,7 +10,7 @@ class ChefCreateForm(forms.ModelForm):
     user_name = forms.CharField(max_length=120, widget=forms.TextInput(
         attrs={
             'class':'form-control col-12',
-            'id':'user-name',
+            'id':'user_name',
             'placeholder':'Enter Your Username',
         }
     ))
@@ -25,7 +25,7 @@ class ChefCreateForm(forms.ModelForm):
     last_name = forms.CharField(max_length=120, widget=forms.TextInput(
         attrs = {
             'class':'form-control',
-            'id':'first_name',
+            'id':'last_name',
             'placeholder':'Enter Your Last Name',
         }
     ))
