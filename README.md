@@ -16,3 +16,8 @@ now you have install those required packages and to do this just run this comman
 ```
 pip install -r requirements.txt
 ```
+To run project you have to import cheffinder.sql in localhost
+After that just go to the project folder and run this command
+```
+python manage.py runserver
+```
