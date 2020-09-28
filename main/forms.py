@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.core.validators import validate_email
-from main.models import ChefCreate
+from main.models import ChefCreate,ApprovalChefCreate
 
 class ChefCreateForm(forms.ModelForm):
 
@@ -61,7 +61,7 @@ class ChefCreateForm(forms.ModelForm):
     ))
 
     class Meta:
-        model = ChefCreate
+        model = ApprovalChefCreate
         fields = ['user_name','first_name','last_name','email','phone','address','location','cv']
 
 

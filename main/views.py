@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import ChefCreateForm,CreateUserForm
 from django.shortcuts import HttpResponse
+from main.models import *
 # Create your views here.
 def home(request):
     return render(request, "front/home.html",{"title":"Home"})
@@ -20,11 +21,19 @@ def apply(request):
         if form.is_valid():
             form.save()
             return redirect('/apply/')
+        else:
+            print("Form is not valid")
     else:
         form = ChefCreateForm()
     return render(request, 'front/apply.html',{"title":"Apply","form":form})
 
 
+def approval_page(request):
+    if not request.user.is_superuser:
+        return redirect('/')
+    else:
+        data = ApprovalChefCreate.objects.all()
+        return render(request, 'front/approval.html',{"title":"Approve","data":data})
 
 def mylogin(request):
     if request.user.is_authenticated:
