@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2020 at 07:43 AM
+-- Generation Time: Sep 28, 2020 at 05:06 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `cheffinder`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `approval_chef_create`
+--
+
+CREATE TABLE `approval_chef_create` (
+  `id` int(11) NOT NULL,
+  `user_name` varchar(120) DEFAULT NULL,
+  `first_name` varchar(120) DEFAULT NULL,
+  `last_name` varchar(120) DEFAULT NULL,
+  `email` varchar(120) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `address` varchar(120) DEFAULT NULL,
+  `location` varchar(120) DEFAULT NULL,
+  `cv` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `approval_chef_create`
+--
+
+INSERT INTO `approval_chef_create` (`id`, `user_name`, `first_name`, `last_name`, `email`, `phone`, `address`, `location`, `cv`) VALUES
+(1, 'shahedtalukder51', 'Rafsan', 'Nayeem', 'shahedtalukder51@gmail.com', '+880176218238', 'East Adalotpara', '24.2509029|89.9159694', 'cv/Course-Contents.docx'),
+(2, 'pravin', 'Pravin', 'Kumar', 'pravin@gmail.com', '01762178238', 'East Adalotpara, Tangail', '24.2509029,89.9159694', 'cv/Course-Contents_WTF2v5R.docx');
 
 -- --------------------------------------------------------
 
@@ -86,14 +112,14 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (22, 'Can change session', 6, 'change_session'),
 (23, 'Can delete session', 6, 'delete_session'),
 (24, 'Can view session', 6, 'view_session'),
-(25, 'Can add chef', 7, 'add_chef'),
-(26, 'Can change chef', 7, 'change_chef'),
-(27, 'Can delete chef', 7, 'delete_chef'),
-(28, 'Can view chef', 7, 'view_chef'),
-(29, 'Can add chef user', 8, 'add_chefuser'),
-(30, 'Can change chef user', 8, 'change_chefuser'),
-(31, 'Can delete chef user', 8, 'delete_chefuser'),
-(32, 'Can view chef user', 8, 'view_chefuser');
+(25, 'Can add chef create', 7, 'add_chefcreate'),
+(26, 'Can change chef create', 7, 'change_chefcreate'),
+(27, 'Can delete chef create', 7, 'delete_chefcreate'),
+(28, 'Can view chef create', 7, 'view_chefcreate'),
+(29, 'Can add approval chef create', 8, 'add_approvalchefcreate'),
+(30, 'Can change approval chef create', 8, 'change_approvalchefcreate'),
+(31, 'Can delete approval chef create', 8, 'delete_approvalchefcreate'),
+(32, 'Can view approval chef create', 8, 'view_approvalchefcreate');
 
 -- --------------------------------------------------------
 
@@ -114,6 +140,15 @@ CREATE TABLE `auth_user` (
   `is_active` tinyint(1) NOT NULL,
   `date_joined` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `auth_user`
+--
+
+INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
+(1, 'pbkdf2_sha256$216000$ZGWkyTgs9V3H$M5+1B4hk7eGLXBHRTLyXNgtBy2fqEm85GV9xsq7TmMw=', '2020-09-28 06:15:11.103461', 1, 'shahed', '', '', 'shahed51@gmail.com', 1, 1, '2020-09-27 17:42:55.508286'),
+(2, 'pbkdf2_sha256$216000$5YAmUwMZNcU8$WSOYU2tziog6cnqUfdoJbOowUF4q0q48ZEd39LoefpQ=', '2020-09-28 06:16:27.577332', 0, 'shahedtalukder51', 'Shahed', 'Talukder', 'shahedtalukder51@gmail.com', 0, 1, '2020-09-28 03:10:05.401743'),
+(4, 'pbkdf2_sha256$216000$ahLiVvNlBjmd$VsNfaKWEr3iCGLmMhDZhz2hyOmWDnd3I2EA4BG1siIM=', '2020-09-28 07:11:58.809674', 0, 'pravin', 'Pravin', 'Kumar', 'pravin@gmail.com', 0, 1, '2020-09-28 07:05:03.423523');
 
 -- --------------------------------------------------------
 
@@ -142,6 +177,24 @@ CREATE TABLE `auth_user_user_permissions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chef_create`
+--
+
+CREATE TABLE `chef_create` (
+  `id` int(11) NOT NULL,
+  `user_name` varchar(120) DEFAULT NULL,
+  `first_name` varchar(120) DEFAULT NULL,
+  `last_name` varchar(120) DEFAULT NULL,
+  `email` varchar(120) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `location` varchar(120) DEFAULT NULL,
+  `cv` varchar(100) NOT NULL,
+  `address` varchar(120) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `django_admin_log`
 --
 
@@ -155,6 +208,16 @@ CREATE TABLE `django_admin_log` (
   `content_type_id` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
+(1, '2020-09-28 03:48:12.497742', '1', 'Shahed|1', 2, '[{\"changed\": {\"fields\": [\"Address\"]}}]', 7, 1),
+(2, '2020-09-28 06:04:53.377500', '1', 'Shahed|1', 3, '', 7, 1),
+(3, '2020-09-28 07:04:18.465278', '3', 'pravin', 3, '', 4, 1),
+(4, '2020-09-28 07:25:54.894017', '2', 'pravin|2', 2, '[{\"changed\": {\"fields\": [\"Cv\"]}}]', 8, 1);
 
 -- --------------------------------------------------------
 
@@ -178,8 +241,8 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (2, 'auth', 'permission'),
 (4, 'auth', 'user'),
 (5, 'contenttypes', 'contenttype'),
-(7, 'main', 'chef'),
-(8, 'main', 'chefuser'),
+(8, 'main', 'approvalchefcreate'),
+(7, 'main', 'chefcreate'),
 (6, 'sessions', 'session');
 
 -- --------------------------------------------------------
@@ -200,31 +263,30 @@ CREATE TABLE `django_migrations` (
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
-(1, 'contenttypes', '0001_initial', '2020-09-25 13:15:23.477782'),
-(2, 'auth', '0001_initial', '2020-09-25 13:15:23.789806'),
-(3, 'admin', '0001_initial', '2020-09-25 13:15:24.556869'),
-(4, 'admin', '0002_logentry_remove_auto_add', '2020-09-25 13:15:24.844895'),
-(5, 'admin', '0003_logentry_add_action_flag_choices', '2020-09-25 13:15:24.859898'),
-(6, 'contenttypes', '0002_remove_content_type_name', '2020-09-25 13:15:24.959904'),
-(7, 'auth', '0002_alter_permission_name_max_length', '2020-09-25 13:15:25.051912'),
-(8, 'auth', '0003_alter_user_email_max_length', '2020-09-25 13:15:25.076913'),
-(9, 'auth', '0004_alter_user_username_opts', '2020-09-25 13:15:25.088916'),
-(10, 'auth', '0005_alter_user_last_login_null', '2020-09-25 13:15:25.165921'),
-(11, 'auth', '0006_require_contenttypes_0002', '2020-09-25 13:15:25.172922'),
-(12, 'auth', '0007_alter_validators_add_error_messages', '2020-09-25 13:15:25.185923'),
-(13, 'auth', '0008_alter_user_username_max_length', '2020-09-25 13:15:25.220927'),
-(14, 'auth', '0009_alter_user_last_name_max_length', '2020-09-25 13:15:25.242928'),
-(15, 'auth', '0010_alter_group_name_max_length', '2020-09-25 13:15:25.264930'),
-(16, 'auth', '0011_update_proxy_permissions', '2020-09-25 13:15:25.275930'),
-(17, 'auth', '0012_alter_user_first_name_max_length', '2020-09-25 13:15:25.296932'),
-(18, 'sessions', '0001_initial', '2020-09-25 13:15:25.333935'),
-(19, 'main', '0001_initial', '2020-09-25 13:15:59.719328'),
-(20, 'main', '0002_auto_20200925_2001', '2020-09-25 14:01:19.745835'),
-(21, 'main', '0003_delete_chef', '2020-09-26 04:52:17.613451'),
-(22, 'main', '0004_chef_customer_user', '2020-09-26 04:52:17.849468'),
-(23, 'main', '0005_auto_20200925_2035', '2020-09-26 04:52:18.531524'),
-(24, 'main', '0006_chef_customer_user', '2020-09-26 04:52:18.750541'),
-(25, 'main', '0007_auto_20200926_1052', '2020-09-26 04:52:19.535605');
+(1, 'contenttypes', '0001_initial', '2020-09-26 15:58:43.971013'),
+(2, 'auth', '0001_initial', '2020-09-26 15:58:44.258037'),
+(3, 'admin', '0001_initial', '2020-09-26 15:58:44.854091'),
+(4, 'admin', '0002_logentry_remove_auto_add', '2020-09-26 15:58:44.996102'),
+(5, 'admin', '0003_logentry_add_action_flag_choices', '2020-09-26 15:58:45.011106'),
+(6, 'contenttypes', '0002_remove_content_type_name', '2020-09-26 15:58:45.093111'),
+(7, 'auth', '0002_alter_permission_name_max_length', '2020-09-26 15:58:45.165115'),
+(8, 'auth', '0003_alter_user_email_max_length', '2020-09-26 15:58:45.186118'),
+(9, 'auth', '0004_alter_user_username_opts', '2020-09-26 15:58:45.202121'),
+(10, 'auth', '0005_alter_user_last_login_null', '2020-09-26 15:58:45.283126'),
+(11, 'auth', '0006_require_contenttypes_0002', '2020-09-26 15:58:45.287126'),
+(12, 'auth', '0007_alter_validators_add_error_messages', '2020-09-26 15:58:45.296128'),
+(13, 'auth', '0008_alter_user_username_max_length', '2020-09-26 15:58:45.349131'),
+(14, 'auth', '0009_alter_user_last_name_max_length', '2020-09-26 15:58:45.374134'),
+(15, 'auth', '0010_alter_group_name_max_length', '2020-09-26 15:58:45.402138'),
+(16, 'auth', '0011_update_proxy_permissions', '2020-09-26 15:58:45.413136'),
+(17, 'auth', '0012_alter_user_first_name_max_length', '2020-09-26 15:58:45.448140'),
+(18, 'sessions', '0001_initial', '2020-09-26 15:58:45.508144'),
+(19, 'main', '0001_initial', '2020-09-26 15:59:30.033799'),
+(20, 'main', '0002_auto_20200926_2159', '2020-09-26 16:00:03.606659'),
+(21, 'main', '0003_remove_chefcreate_c_id', '2020-09-26 16:00:22.995039'),
+(22, 'main', '0004_auto_20200927_2142', '2020-09-27 15:42:23.255291'),
+(23, 'main', '0005_chefcreate_address', '2020-09-28 03:46:02.432648'),
+(24, 'main', '0006_approvalchefcreate', '2020-09-28 06:04:02.680745');
 
 -- --------------------------------------------------------
 
@@ -243,28 +305,20 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('qv06zsdre4xnt28wvi43vttzokx6wuwp', '.eJxVjDsOwyAQBe9CHSFg-Tllep8B7RoITiKQjF1FuXtsyUXSvpl5bxZwW0vYelrCHNmVaXb53QinZ6oHiA-s98anVtdlJn4o_KSdjy2m1-10_w4K9rLXGQZwKMF6yAJNzoQ2R-8SSABFySoJSdtIEoV3igbphBJmT4zPLmr2-QLaQTc9:1kLp5E:9EshdYrkIy8f1c-sDYZCk-7URpnDlaMJKF8r4hCO_Xk', '2020-10-09 14:52:24.459850');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `main_chefuser`
---
-
-CREATE TABLE `main_chefuser` (
-  `id` int(11) NOT NULL,
-  `c_id` int(11) DEFAULT NULL,
-  `user_name` varchar(120) DEFAULT NULL,
-  `fist_name` varchar(120) DEFAULT NULL,
-  `last_name` varchar(120) DEFAULT NULL,
-  `email` varchar(120) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  `password` varchar(120) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+('kab8pdx8jsp8t46smwp0m0tvu2f74su2', '.eJxVjDsOwjAQBe_iGln-fyjpOYO16zU4gGwpTirE3UmkFNC-mXlvlmBdalpHmdNE7MwkO_1uCPlZ2g7oAe3eee5tmSfku8IPOvi1U3ldDvfvoMKoWx20IBLRkCsZAhbSUWaV0YBUpIKwBjHenFIGrbHBbg56JbUDH230hX2-6xo3og:1kMmRL:KNxaQjkAdHfelBdBz0hFy7ZXSXM2m2Oit-tEZrfBMoc', '2020-10-12 06:15:11.107045'),
+('n55qylq11kallnwvasndzjcl71lzmxgj', '.eJxVjMsOwiAQRf-FtSGAPF267zeQmQGkaiAp7cr479qkC93ec859sQjbWuM28hLnxC5Ms9PvhkCP3HaQ7tBunVNv6zIj3xV-0MGnnvLzerh_BxVG_dZIQknQEKxFkM6ZIoMCElqAVJ68ssXblCWRcMoSnI0KBQtlgzbIQuz9Ad57OCM:1kMnDs:FZr2D91SdYlCnudfzdxv000_DXgL_fjgFaGplJEDlOQ', '2020-10-12 07:05:20.223199'),
+('rx2tdyo25f1wuycqjh6nrc3ztupdv3g8', '.eJxVjMsOwiAQRf-FtSGAPF267zeQmQGkaiAp7cr479qkC93ec859sQjbWuM28hLnxC5Ms9PvhkCP3HaQ7tBunVNv6zIj3xV-0MGnnvLzerh_BxVG_dZIQknQEKxFkM6ZIoMCElqAVJ68ssXblCWRcMoSnI0KBQtlgzbIQuz9Ad57OCM:1kMnDb:jLdGPHLE9BBFAXiM6iCtJv0gG4QaWBmQOGHfov4lRlI', '2020-10-12 07:05:03.672544'),
+('uocvhhf2bssdnjvdn95zr7vbuyjon7se', '.eJxVjMsOwiAQRf-FtSGAPF267zeQmQGkaiAp7cr479qkC93ec859sQjbWuM28hLnxC5Ms9PvhkCP3HaQ7tBunVNv6zIj3xV-0MGnnvLzerh_BxVG_dZIQknQEKxFkM6ZIoMCElqAVJ68ssXblCWRcMoSnI0KBQtlgzbIQuz9Ad57OCM:1kMnKI:x75E31tk-N3ceDgZwd5-dsAW52qeRH5IBNmTRh4xaOs', '2020-10-12 07:11:58.812674');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `approval_chef_create`
+--
+ALTER TABLE `approval_chef_create`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `auth_group`
@@ -312,6 +366,12 @@ ALTER TABLE `auth_user_user_permissions`
   ADD KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`);
 
 --
+-- Indexes for table `chef_create`
+--
+ALTER TABLE `chef_create`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
@@ -340,26 +400,26 @@ ALTER TABLE `django_session`
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
 
 --
--- Indexes for table `main_chefuser`
---
-ALTER TABLE `main_chefuser`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `approval_chef_create`
+--
+ALTER TABLE `approval_chef_create`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `auth_group`
 --
 ALTER TABLE `auth_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `auth_permission`
@@ -386,10 +446,16 @@ ALTER TABLE `auth_user_user_permissions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `chef_create`
+--
+ALTER TABLE `chef_create`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -401,13 +467,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT for table `main_chefuser`
---
-ALTER TABLE `main_chefuser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
